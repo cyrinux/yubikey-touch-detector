@@ -64,13 +64,13 @@ func main() {
 		go notifier.SetupLibnotifyNotifier(notifiers)
 	}
 
-	requestGPGCheck := make(chan bool)
-	go detector.CheckGPGOnRequest(requestGPGCheck, notifiers)
-
-	go detector.WatchU2F(notifiers)
-	go detector.WatchHMAC(notifiers)
-	go detector.WatchGPG(gpgPubringPath, requestGPGCheck)
-	go detector.WatchSSH(requestGPGCheck, exits)
+	// requestGPGCheck := make(chan bool)
+	// go detector.CheckGPGOnRequest(requestGPGCheck, notifiers)
+	go detector.WatchCCID(notifiers)
+	// go detector.WatchU2F(notifiers)
+	// go detector.WatchHMAC(notifiers)
+	// go detector.WatchGPG(gpgPubringPath, requestGPGCheck)
+	// go detector.WatchSSH(requestGPGCheck, exits)
 
 	wait := make(chan bool)
 	<-wait
