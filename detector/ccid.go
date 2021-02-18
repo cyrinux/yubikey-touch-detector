@@ -40,134 +40,30 @@ const (
 // https://github.com/LudovicRousseau/CCID/blob/master/src/ccid.h
 
 type ccidDescriptor struct {
-	/*
-	 * CCID Sequence number
-	 */
-	pbSeq    uintptr
-	realBSeq uint8
-
-	/*
-	 * VendorID << 16 + ProductID
-	 */
-	readerID int16
-
-	/*
-	 * Maximum message length
-	 */
-	dwMaxCCIDMessageLength uint16
-
-	/*
-	 * Maximum IFSD
-	 */
-	dwMaxIFSD int16
-
-	/*
-	 * Features supported by the reader (directly from Class Descriptor)
-	 */
-	dwFeatures int16
-
-	/*
-	 * PIN support of the reader (directly from Class Descriptor)
-	 */
-	bPINSupport int8
-
-	/*
-	 * Display dimensions of the reader (directly from Class Descriptor)
-	 */
-	wLcdLayout uint16
-
-	/*
-	 * Default Clock
-	 */
-	dwDefaultClock int16
-
-	/*
-	 * Max Data Rate
-	 */
-	dwMaxDataRate uint16
-
-	/*
-	 * Number of available slots
-	 */
-	bMaxSlotIndex int8
-
-	/*
-	 * Slot in use
-	 */
-	bCurrentSlotIndex int8
-
-	/*
-	 * The array of data rates supported by the reader
-	 */
-	arrayOfSupportedDataRates uintptr
-
-	/*
-	 * Read communication port timeout
-	 * value is milliseconds
-	 * this value can evolve dynamically if card request it (time processing).
-	 */
-	readTimeout uint16
-
-	/*
-	 * Card protocol
-	 */
-	cardProtocol int16
-
-	/*
-	 * Reader protocols
-	 */
-	dwProtocols int16
-
-	/*
-	 * bInterfaceProtocol (CCID, ICCD-A, ICCD-B)
-	 */
-	bInterfaceProtocol int16
-
-	/*
-	 * bNumEndpoints
-	 */
-	bNumEndpoints int16
-
-	/*
-	 * GemCore SIM PRO slot status management
-	 * The reader always reports a card present even if no card is inserted.
-	 * If the Power Up fails the driver will report IFD_ICC_NOT_PRESENT instead
-	 * of IFD_ICC_PRESENT
-	 */
-	dwSlotStatus int16
-
-	/*
-	 * bVoltageSupport (bit field)
-	 * 1 = 5.0V
-	 * 2 = 3.0V
-	 * 4 = 1.8V
-	 */
-	bVoltageSupport int16
-
-	/*
-	 * USB serial number of the device (if any)
-	 */
-	sIFD_serial_number uintptr
-
-	/*
-	 * USB iManufacturer string
-	 */
-	sIFD_iManufacturer uintptr
-
-	/*
-	 * USB bcdDevice
-	 */
-	IFD_bcdDevice int16
-
-	/*
-	 * Gemalto extra features, if any
-	 */
-	gemalto_firmware_features uintptr
-
-	/*
-	 * Zero Length Packet fixup (boolean)
-	 */
-	zlp int8
+	pbSeq                     uint8
+	realBSeq                  uint8
+	readerID                  int32
+	dwMaxCCIDMessageLength    uint32
+	dwMaxIFSD                 int32
+	dwFeatures                int32
+	bPINSupport               int8
+	wLcdLayout                uint32
+	dwDefaultClock            int32
+	dwMaxDataRate             uint32
+	bMaxSlotIndex             int8
+	bCurrentSlotIndex         int8
+	arrayOfSupportedDataRates uint8
+	readTimeout               uint32
+	cardProtocol              int32
+	dwProtocols               int32
+	bInterfaceProtocol        int32
+	bNumEndpoints             int32
+	dwSlotStatus              int32
+	bVoltageSupport           int32
+	sIFD_serial_number        uint8
+	sIFD_iManufacturer        uint8
+	IFD_bcdDevice             int32
+	gemalto_firmware_features uint8
 }
 
 var (
